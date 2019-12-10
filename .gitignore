@@ -1,0 +1,19 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/ProjectSettings.json
+/.vs/slnx.sqlite
+/CreateBarCodeStep/obj/Debug/CreateBarCodeStep.csprojAssemblyReference.cache
+/.vs/sdk-examples/v16/.suo
+/.vs/VSWorkspaceState.json
+/RemoveDotnetSteps/.vs/RemoveDotnetSteps/v16/Server/sqlite3/db.lock
+/RemoveDotnetSteps/.vs/RemoveDotnetSteps/v16/Server/sqlite3/storage.ide
+/RemoveDotnetSteps/.vs/RemoveDotnetSteps/v16/.suo
+/RemoveDotnetSteps/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/CustomDataSources/.vs/CustomDataSources/v16/Server/sqlite3
+/CustomDataSources/.vs/CustomDataSources/v16
+/CustomDataSources/bin/Debug
+/CustomDataSources/obj/Debug
+/RemoveDotnetSteps/bin/Debug
+/RemoveDotnetSteps/obj/Debug
