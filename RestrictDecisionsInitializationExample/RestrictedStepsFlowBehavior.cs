@@ -6,6 +6,8 @@ namespace RestrictedDecisionsInitializationExample
     /*
     * This class is extended the DefaultFlowBehavior to inherit most behavior from the Default Flow Behavior
     * and just override what we need to override for a specific use case.
+    * 
+    * For more on Flow Behavior please visit https://documentation.decisions.com/v6/docs/flow-behavior
     */
     public class RestrictedStepsFlowBehavior : DefaultFlowBehavior
     {
