@@ -12,7 +12,7 @@ namespace RestrictedDecisionsInitializationExample
     * This class is extending the DesignerProjectFolder to inherit most behavior from the Designer Project Folder Behavior
     * and just override what we need to override for a specific use case.
     */
-    class RestrictedStepsFolderBehavior : DesignerProjectFolder
+    public class RestrictedStepsFolderBehavior : DesignerProjectFolder
     {
         //Override to ensure the folder is visible ONLY in the Studio
         public override bool IsVisible(Folder f)
@@ -31,9 +31,11 @@ namespace RestrictedDecisionsInitializationExample
         }
 
         //Method to create a flow with the implemented behavior using Element Registration Helper
+        //entityId is the ID of the folder being acted on
+        //answer is the text provided by the user who triggered the GetStringAction and will become the name of the rule
         private void CreateRestrictedFlow(AbstractUserContext userContext, string entityID, string answer)
         {
-            // Create the flow with the implemented flow behavior
+            //Create the flow with the implemented flow behavior 
             CreateElementRegistrationHelper.Create(new ElementContextInfo(entityID, ElementType.Flow, null, typeof(RestrictedStepsFlowBehavior).FullName, null, answer), null, true);
         }
     }
