@@ -5,4 +5,6 @@ CreateBarCodeStep - A simple project using the Aspose.NET library that is alread
 
 CustomDataSources - A project containing reporting data source examples using the SDK.
 
+RestrictDecisionsInitializationExample - A project containing an SDK example which filters certain steps out of the step catalog using an Initializer, Folder Behavior, and Flow Behavior.
+
 
