@@ -10,7 +10,7 @@ namespace CustomDataSources
     //This decorator will automatically register any public method that returns an array as a reporting data source
     [AutoRegisterMethodsOnClassAsReportSources(true, "Custom Data Sources")]
     [Writable]
-    public class CustomDataSource
+    public class SimpleCustomDataSource
     {
         public SoftwareItem[] MoreThanTenAvailableLicenses()
         {
