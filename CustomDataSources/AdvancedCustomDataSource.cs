@@ -87,12 +87,14 @@ namespace CustomDataSources
             statement.OrderBy.Add("available_licenses", ORMResultOrder.Descending);
             statement.OrderBy.Add("product_name", ORMResultOrder.Descending);
 
-            //Select Top x to ensure the results include the page
-            //Only the correct results within these limited results will be loaded into memory in the report
-            if (filters != null && filters[0] != null && filters[0].Report != null && 
-                filters[0].Report.RowsPerPage != null && pageIndex != null) {
-                statement.Top = (pageIndex + 1) * filters[0].Report.RowsPerPage;
+            //Select Top x to limit results, default to 500
+            if (pageIndex != null && limitCount != null) {
+                statement.Top = (pageIndex + 1) * limitCount;
+            } else {
+                statement.Top = 500;
             }
+
+            //Example Data to Access Rows Per Page - filters[0].Report.RowsPerPage
            
             //Execute the query
             DataSet queryResults = new DynamicORM().RunQuery(statement);
