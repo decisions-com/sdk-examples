@@ -1,7 +1,6 @@
 ﻿using DecisionsFramework.Data.ORMapper;
 using DecisionsFramework.Design.ConfigurationStorage.Attributes;
 using DecisionsFramework.Design.Report;
-using System;
 using System.Data;
 
 namespace CustomDataSources
@@ -77,18 +76,30 @@ namespace CustomDataSources
             statement.PrimaryTable.Fields.Add(new CompositeSelectStatement.FieldDefinition("full_path"));
 
             //You can add WhereConditions to filter out results
-            WhereCondition numberOfLicenses = new LiteralWhereCondition("available_licenses > 10");
-
+            //You can build these where conditions from the filters passed in
             //Add the where condition(s) to the statement
-            //You can use the IReportFilter[] to process the filters and add the appropriate clauses to the query.
-            statement.WhereConditions.WhereConditions.Add(numberOfLicenses);
-
+            //You can use the IReportFilter[] to process the filters and add the appropriate clauses to the query.   
+            foreach (IReportFilter filter in filters)
+            {
+                //If the filter is of the GreaterThanCustomFilter type add the Where Condition
+                if (typeof(GreaterThanCustomFilter).IsInstanceOfType(filter))
+                {
+                    //Add a literal where condition if the Column Name is specified
+                    GreaterThanCustomFilter greaterThanCustomFilter = (GreaterThanCustomFilter)filter;
+                    if (greaterThanCustomFilter.ColumnName != null)
+                    {
+                       statement.WhereConditions.WhereConditions.Add(new LiteralWhereCondition(greaterThanCustomFilter.ColumnName + " > " + 
+                           greaterThanCustomFilter.GreaterThanValue));
+                    }
+                }
+            }
+           
             //Add Order By to consistently order results for handling pagination
             statement.OrderBy.Add("available_licenses", ORMResultOrder.Descending);
             statement.OrderBy.Add("product_name", ORMResultOrder.Descending);
 
             //Select Top x to limit results, default to 500
-            if (pageIndex != null && limitCount != null) {
+            if (limitCount != null) {
                 statement.Top = (pageIndex + 1) * limitCount;
             } else {
                 statement.Top = 500;
