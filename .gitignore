@@ -14,3 +14,10 @@
 /RestrictDecisionsInitializationExample/.vs/RestrictedDecisionsInitializationExample/v16
 /RestrictDecisionsInitializationExample/bin/Debug
 /RestrictDecisionsInitializationExample/obj/Debug
+/CustomModule/.vs/CustomModule/v16
+/CustomModule/bin/Debug
+/CustomModule/obj/Debug
+/CustomModule/packages/MathNet.Numerics.4.9.0
+/RestrictDecisionsInitializationExample/obj/Release
+/CustomDataSources/obj/Release
+/CreateBarCodeStep/obj/Release
