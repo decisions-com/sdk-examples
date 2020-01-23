@@ -10,3 +10,6 @@ This is a public project made up of simple requests from customers, partners, an
 
 - RestrictDecisionsInitializationExample - A project containing an SDK example which filters certain steps out of the step catalog using an Initializer, Folder Behavior, and Flow Behavior.
 	- Documentation for Example - https://docs.google.com/document/d/1UuSOXojqrJmhd61mM0_WlvPOvsq20ZpeBoC8Fz71Uyc/edit?usp=sharing
+
+- RestRulesExample - A project containing a simple rule creation step that can be used normally in a flow and via REST integration
+    - Documentation for Example - https://docs.google.com/document/d/1-B4CMzYi--spCKGZnY1b9LxB9R7ZzwZidfIBtZDx3_8/edit?usp=sharing
