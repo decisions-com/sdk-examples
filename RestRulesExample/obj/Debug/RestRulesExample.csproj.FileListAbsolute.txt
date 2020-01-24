@@ -1,0 +1,7 @@
+C:\Users\brian\source\repos\RestRulesExample\RestRulesExample\bin\Debug\RestRulesExample.dll
+C:\Users\brian\source\repos\RestRulesExample\RestRulesExample\bin\Debug\RestRulesExample.pdb
+C:\Users\brian\source\repos\RestRulesExample\RestRulesExample\bin\Debug\DecisionsFramework.dll
+C:\Users\brian\source\repos\RestRulesExample\RestRulesExample\obj\Debug\RestRulesExample.csproj.CoreCompileInputs.cache
+C:\Users\brian\source\repos\RestRulesExample\RestRulesExample\obj\Debug\RestRulesExample.csproj.CopyComplete
+C:\Users\brian\source\repos\RestRulesExample\RestRulesExample\obj\Debug\RestRulesExample.dll
+C:\Users\brian\source\repos\RestRulesExample\RestRulesExample\obj\Debug\RestRulesExample.pdb
