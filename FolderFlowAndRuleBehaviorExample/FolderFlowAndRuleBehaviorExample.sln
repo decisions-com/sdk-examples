@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FolderFlowAndRuleBehaviorExample", "FolderFlowAndRuleBehaviorExample\FolderFlowAndRuleBehaviorExample.csproj", "{FFB3E847-AA65-4F28-AF74-3A7B19D3A22A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFB3E847-AA65-4F28-AF74-3A7B19D3A22A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFB3E847-AA65-4F28-AF74-3A7B19D3A22A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFB3E847-AA65-4F28-AF74-3A7B19D3A22A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFB3E847-AA65-4F28-AF74-3A7B19D3A22A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
