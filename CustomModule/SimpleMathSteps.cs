@@ -16,5 +16,13 @@ namespace CustomModule
             Int32 product = numberOne * numberTwo;
             return product > numberToCompare;
         }
+        
+        //A simple method that performs a calculation and returns a boolean result.
+        //The argument list becomes the inputs required for this step.
+        public static bool IsProductLessThan(Int32 numberOne, Int32 numberTwo, Int32 numberToCompare)
+        {
+            Int32 product = numberOne * numberTwo;
+            return product > numberToCompare;
+        }
     }
 }
