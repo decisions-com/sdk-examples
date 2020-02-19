@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FlowExecutionThread.cs" />
+    <Compile Include="RunFlowActionInitializer.cs" />
+    <Compile Include="RunFlowFolderBehavior.cs" />
     <Compile Include="TemplateRulesFolderBehavior.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
