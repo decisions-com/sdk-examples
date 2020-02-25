@@ -7,6 +7,8 @@ This is a public project made up of simple requests from customers, partners, an
 
 - CustomModule - A project containing a simple and advanced step example using the SDK. The advanced step has a dependency on a third party library. This project is also used to demostrate the creation of a custom module.
 	- Documentation on creating a Custom Module - https://docs.google.com/document/d/1yctYDFjw-tABFBR2dQwofCCtb0lyPvxxJkbLZuZe8vA/edit?usp=sharing
+	
+- FolderFlowAndRuleBehaviorExample - A project utilizing the Flow Engine to kick off flows and log timing metrics using an Initializer, Folder Behavior, and Actions.
 
 - RestrictDecisionsInitializationExample - A project containing an SDK example which filters certain steps out of the step catalog using an Initializer, Folder Behavior, and Flow Behavior.
 	- Documentation for Example - https://docs.google.com/document/d/1UuSOXojqrJmhd61mM0_WlvPOvsq20ZpeBoC8Fz71Uyc/edit?usp=sharing
