@@ -119,70 +119,70 @@ namespace FolderFlowAndRuleBehaviorExample
         //User Context - The User Context of the User who executed the Action
         //Entity ID - The Entity ID of the Folder the Action Lives on
         //Answer - The integer input in the action input field
-        private void SetExecutionsValueNonBatch4(AbstractUserContext userContext, string entityId, int answer)
+        private static void SetExecutionsValueNonBatch4(AbstractUserContext userContext, string entityId, int answer)
         {
             SetExecutionsValue(userContext, answer, 4, "803f56bd-51a7-11ea-8232-a72eeb3fabdb");
         }
         
         //Wrapper method to call a method on action execution that requires more than the standard action parameters
         //See above for Parameters
-        private void SetExecutionsValueNonBatch8(AbstractUserContext userContext, string entityId, int answer)
+        private static void SetExecutionsValueNonBatch8(AbstractUserContext userContext, string entityId, int answer)
         {
             SetExecutionsValue(userContext, answer, 8, "803f56bd-51a7-11ea-8232-a72eeb3fabdb");
         }
         
         //Wrapper method to call a method on action execution that requires more than the standard action parameters
         //See above for Parameters
-        private void SetExecutionsValueNonBatch16(AbstractUserContext userContext, string entityId, int answer)
+        private static void SetExecutionsValueNonBatch16(AbstractUserContext userContext, string entityId, int answer)
         {
             SetExecutionsValue(userContext, answer, 16, "803f56bd-51a7-11ea-8232-a72eeb3fabdb");
         }
         
         //Wrapper method to call a method on action execution that requires more than the standard action parameters
         //See above for Parameters
-        private void SetExecutionsValueNonBatch32(AbstractUserContext userContext, string entityId, int answer)
+        private static void SetExecutionsValueNonBatch32(AbstractUserContext userContext, string entityId, int answer)
         {
             SetExecutionsValue(userContext, answer, 32, "803f56bd-51a7-11ea-8232-a72eeb3fabdb");
         }
         
         //Wrapper method to call a method on action execution that requires more than the standard action parameters
         //See above for Parameters
-        private void SetExecutionsValueNonBatch64(AbstractUserContext userContext, string entityId, int answer)
+        private static void SetExecutionsValueNonBatch64(AbstractUserContext userContext, string entityId, int answer)
         {
             SetExecutionsValue(userContext, answer, 64, "803f56bd-51a7-11ea-8232-a72eeb3fabdb");
         }
         
         //Wrapper method to call a method on action execution that requires more than the standard action parameters
         //See above for Parameters
-        private void SetExecutionsValueBatch4(AbstractUserContext userContext, string entityId, int answer)
+        private static void SetExecutionsValueBatch4(AbstractUserContext userContext, string entityId, int answer)
         {
             SetExecutionsValue(userContext, answer, 4, "f0a5627e-5338-11ea-8232-a72eeb3fabdb");
         }
         
         //Wrapper method to call a method on action execution that requires more than the standard action parameters
         //See above for Parameters
-        private void SetExecutionsValueBatch8(AbstractUserContext userContext, string entityId, int answer)
+        private static void SetExecutionsValueBatch8(AbstractUserContext userContext, string entityId, int answer)
         {
             SetExecutionsValue(userContext, answer, 8, "f0a5627e-5338-11ea-8232-a72eeb3fabdb");
         }
         
         //Wrapper method to call a method on action execution that requires more than the standard action parameters
         //See above for Parameters
-        private void SetExecutionsValueBatch16(AbstractUserContext userContext, string entityId, int answer)
+        private static void SetExecutionsValueBatch16(AbstractUserContext userContext, string entityId, int answer)
         {
             SetExecutionsValue(userContext, answer, 16, "f0a5627e-5338-11ea-8232-a72eeb3fabdb");
         }
         
         //Wrapper method to call a method on action execution that requires more than the standard action parameters
         //See above for Parameters
-        private void SetExecutionsValueBatch32(AbstractUserContext userContext, string entityId, int answer)
+        private static void SetExecutionsValueBatch32(AbstractUserContext userContext, string entityId, int answer)
         {
             SetExecutionsValue(userContext, answer, 32, "f0a5627e-5338-11ea-8232-a72eeb3fabdb");
         }
         
         //Wrapper method to call a method on action execution that requires more than the standard action parameters
         //See above for Parameters
-        private void SetExecutionsValueBatch64(AbstractUserContext userContext, string entityId, int answer)
+        private static void SetExecutionsValueBatch64(AbstractUserContext userContext, string entityId, int answer)
         {
             SetExecutionsValue(userContext, answer, 64, "f0a5627e-5338-11ea-8232-a72eeb3fabdb");
         }
