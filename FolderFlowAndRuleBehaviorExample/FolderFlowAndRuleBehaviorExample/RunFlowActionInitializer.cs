@@ -14,7 +14,7 @@ namespace FolderFlowAndRuleBehaviorExample
     {
         //Setting a hardcoded folder id for the example folder is not necessary, but may 
         //make it easier to have code elsewhere that makes references to this folder
-        internal const string FLOW_PERFORMANCE_TESTS_FOLDER = "FLOW_PERFORMANCE_TEST_FOLDER";
+        private const string FLOW_PERFORMANCE_TESTS_FOLDER = "FLOW_PERFORMANCE_TEST_FOLDER";
         
         //This method is called when the module is initialized
         public void Initialize()
