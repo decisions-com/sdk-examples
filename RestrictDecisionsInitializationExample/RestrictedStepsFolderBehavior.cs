@@ -5,6 +5,7 @@ using DecisionsFramework.ServiceLayer.Services.ConfigurationStorage;
 using DecisionsFramework.ServiceLayer.Services.Folder;
 using DecisionsFramework.ServiceLayer.Utilities;
 using System.Collections.Generic;
+using DecisionsFramework.Design.Flow;
 
 namespace RestrictedDecisionsInitializationExample
 {
@@ -35,8 +36,39 @@ namespace RestrictedDecisionsInitializationExample
         //answer is the text provided by the user who triggered the GetStringAction and will become the name of the rule
         private void CreateRestrictedFlow(AbstractUserContext userContext, string entityID, string answer)
         {
+
             //Create the flow with the implemented flow behavior 
-            CreateElementRegistrationHelper.Create(new ElementContextInfo(entityID, ElementType.Flow, null, typeof(RestrictedStepsFlowBehavior).FullName, null, answer), null, true);
+            ElementContextInfo info = new ElementContextInfo(entityID, ElementType.Flow, null, 
+                typeof(RestrictedStepsFlowBehavior).FullName, null, answer);
+            
+            string createdElementRegistrationId = null;
+            if (info.ShowIntent)
+            {
+                FlowInputDataDescription[] inputs = (info.ShowData) ? info.FlowInputs : null;
+                string flowExecutionsInFolderId = (info.ShowTracking && info.SetupReportingOnFlowExecution) ? info.StoreFlowExecutionsInFolderId : null;
+                string flowRunIdPrefix = (info.ShowTracking && info.SetupReportingOnFlowExecution) ? info.Prefix : null;
+
+                // we are going to create based on intent
+                createdElementRegistrationId =
+                    ConfigurationStorageService.Instance.CreateFlowWithExtraSettings(UserContextHolder.GetCurrent(),
+                        info.FolderId, info.Name, inputs, flowExecutionsInFolderId, flowRunIdPrefix);
+            }
+            else
+            if (info.BasedOn == CreateElementBasedOn.Template && !string.IsNullOrEmpty(info.TemplateId))
+            {
+                createdElementRegistrationId =
+                    ConfigurationStorageService.Instance.CreateFlowFromTemplate(UserContextHolder.GetCurrent(), info.FolderId, info.Name, info.TemplateId);
+            }
+            else
+            if (info.BasedOn == CreateElementBasedOn.Behavior && !string.IsNullOrWhiteSpace(info.BehaviorType))
+            {
+                createdElementRegistrationId =
+                    ConfigurationStorageService.Instance.CreateFlowFromTemplateAndBehaviorType(UserContextHolder.GetCurrent(), info.FolderId, info.Name, null, info.BehaviorType);
+            }
+
+            if (string.IsNullOrEmpty(createdElementRegistrationId))
+                ConfigurationStorageService.Instance.CreateFlow(UserContextHolder.GetCurrent(), info.FolderId, info.Name);
+
         }
     }
 }
