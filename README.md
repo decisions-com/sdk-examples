@@ -13,6 +13,8 @@ This is a public project made up of simple requests from customers, partners, an
 - FetchSpecificSteps - A project containing a step using the SDK. The step takes in a DB connection name and returns all of the current steps used in flows using that DB connection name along with the table they're using.
 	
 - FileSplitterStep - A project containing a step using the SDK. The step takes a CSV file and splits it into individual files, each containing a specified number of lines.
+
+- FlowToolboxSteps - A project containing steps that produce information about the Flow Toolbox. Currently, there is only one step which produces a CSV listing all available steps minus the .Net Libraries.
 	
 - FolderFlowAndRuleBehaviorExample - A project utilizing the Flow Engine to kick off flows and log timing metrics using an Initializer, Folder Behavior, and Actions.
 
