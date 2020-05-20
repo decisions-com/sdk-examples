@@ -42,7 +42,8 @@ namespace FlowToolboxSteps
                 {
                     if (i == nodes.Length - 1)
                     {
-                        categoryString += $"{nodes[i]}"; 
+                        categoryString += $"{nodes[i]}";
+                        continue;
                     }
                     
                     categoryString += $"{nodes[i]}/";
