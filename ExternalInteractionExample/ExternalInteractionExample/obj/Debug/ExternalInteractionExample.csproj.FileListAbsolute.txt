@@ -1,0 +1,8 @@
+C:\Users\brian\Source\Repos\code-training2\ExternalInteractionExample\ExternalInteractionExample\bin\Debug\ExternalInteractionExample.dll
+C:\Users\brian\Source\Repos\code-training2\ExternalInteractionExample\ExternalInteractionExample\bin\Debug\ExternalInteractionExample.pdb
+C:\Users\brian\Source\Repos\code-training2\ExternalInteractionExample\ExternalInteractionExample\bin\Debug\DecisionsFramework.dll
+C:\Users\brian\Source\Repos\code-training2\ExternalInteractionExample\ExternalInteractionExample\obj\Debug\ExternalInteractionExample.csprojAssemblyReference.cache
+C:\Users\brian\Source\Repos\code-training2\ExternalInteractionExample\ExternalInteractionExample\obj\Debug\ExternalInteractionExample.csproj.CoreCompileInputs.cache
+C:\Users\brian\Source\Repos\code-training2\ExternalInteractionExample\ExternalInteractionExample\obj\Debug\ExternalInteractionExample.csproj.CopyComplete
+C:\Users\brian\Source\Repos\code-training2\ExternalInteractionExample\ExternalInteractionExample\obj\Debug\ExternalInteractionExample.dll
+C:\Users\brian\Source\Repos\code-training2\ExternalInteractionExample\ExternalInteractionExample\obj\Debug\ExternalInteractionExample.pdb
