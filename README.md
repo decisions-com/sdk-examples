@@ -11,7 +11,7 @@ This is a public project made up of simple requests from customers, partners, an
 	- Documentation on creating a Custom Module - https://docs.google.com/document/d/1yctYDFjw-tABFBR2dQwofCCtb0lyPvxxJkbLZuZe8vA/edit?usp=sharing
 
 - ExternalInteractionExample - A project containing a step, a service, and an entity using the sdk. It demonstrates how an IAsync step can be created using the SDK and interacted with by external services.
-        - Documentation for Example - https://docs.google.com/document/d/1NvVl3PyjeMfvbmgd0JHyfpsyl7cdIlqqzKlEtxZWDZo/edit?usp=sharing 
+	- Documentation for Example - https://docs.google.com/document/d/1NvVl3PyjeMfvbmgd0JHyfpsyl7cdIlqqzKlEtxZWDZo/edit?usp=sharing 
 	
 - FetchSpecificSteps - A project containing a step using the SDK. The step takes in a DB connection name and returns all of the current steps used in flows using that DB connection name along with the table they're using.
 	
