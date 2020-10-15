@@ -26,3 +26,6 @@ This is a public project made up of simple requests from customers, partners, an
 
 - RestRulesExample - A project containing a simple rule creation step that can be used normally in a flow and via REST integration
     - Documentation for Example - https://docs.google.com/document/d/1-B4CMzYi--spCKGZnY1b9LxB9R7ZzwZidfIBtZDx3_8/edit?usp=sharing
+
+- CustomRuleAdvanced - A project containing sample code for creating a Rule step with Input and Validation features.
+	- Companion project for documentation.decisions.com - https://documentation.decisions.com/docs/rule-steps-advanced
