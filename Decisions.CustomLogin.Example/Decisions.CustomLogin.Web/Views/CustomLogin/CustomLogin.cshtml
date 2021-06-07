@@ -1,0 +1,137 @@
+﻿@using Newtonsoft.Json
+@using Decisions.Web.Core.Models
+@inject Decisions.Web.Core.Models.PortalSettingsModel portalSettingsModel
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery antiforgery
+@{
+    var token = antiforgery.GetAndStoreTokens(this.Context).RequestToken;
+}
+@model LoginViewModel
+
+@{
+    ViewData["Title"] = portalSettingsModel.PortalSettings.DefaultWebPageTitle ?? "Log in";
+    this.Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<script src="~/Scripts/login.js"></script>
+<style>
+    body {
+        background: #a7a7a6 !important;
+    }
+</style>
+
+<div class="dp-login-panel__logo" style="padding-top:0px; padding-bottom:40px; font-size:42px;font-weight:600;">
+    CUSTOM LOGIN PAGE
+</div>
+
+<form id="__CustomLoginForm" asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="dp-login-panel__form">
+    @Html.AntiForgeryToken()
+    <div class="dp-login-panel__item">
+        <label for="txt_login_username" class="dp-login-panel__label">Username or Email</label>
+        @if (Model.SignInWithDifferentAccount)
+        {
+            <label id="lbl_login_username" class="dp-login-panel__label">@Model.Email</label>
+            @Html.HiddenFor(m => Model.Email);
+        }
+        else
+        {
+            @Html.TextBoxFor(m => m.Email, null, new { @class = "dp-login-panel__input-text", id = "txt_login_username" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "dp-login-panel__field-validation-error validation_message validate_UsernameRequired" })
+        }
+    </div>
+
+    <div class="dp-login-panel__item">
+        <label for="txt_login_password" class="dp-login-panel__label">Password</label>
+        @Html.PasswordFor(m => m.Password, new { @class = "dp-login-panel__input-password", id = "txt_login_password" })
+        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "dp-login-panel__field-validation-error validation_message validate_PasswordRequired" })
+        <span class="dp-login-panel__field-validation-error validation_message" id="lbl_error">@Model.Error</span>
+    </div>
+    @if (Model.ShowRememberMe)
+    {
+        <div class="dp-login-panel__checkbox">
+            <label class="dp-login-panel__checkbox-label dp-login-panel__remember-me">@Html.CheckBoxFor(m => m.RememberMe) Remember Me </label>
+        </div>
+    }
+    @if (Model.CanRegister || Model.LoginAsGuest)
+    {
+        <div class="dp-login-panel__item dp-login-panel__item-center">
+            @if (Model.CanRegister)
+            {
+                <a href="@Url.Action("RegisterUser")" class="dp-login-panel__link dp-login-panel__register-btn">Register</a>
+            }
+            @if (Model.CanRegister && Model.LoginAsGuest)
+            {
+                <span id="linkDot-register-guest" class="dp-login-panel__span-separator">&#8226;</span>
+            }
+            @if (Model.LoginAsGuest)
+            {
+                <a href="@Url.Action("LoginAsGuest", "Account", new { instanceName = Model.SelectedInstance, rememberMe = Model.RememberMe, returnUrl = Model.ReturnUrl })"
+                   class="dp-login-panel__link">Login As Guest</a>
+            }
+        </div>
+    }
+    @if (Model.SignInWithDifferentAccount)
+    {
+        <div class="dp-login-panel__item">
+            <a id="account_chooser_link" class="dp-login-panel__link" href="@Url.Action("Login")">Sign in with a different account</a>
+        </div>
+    }
+    <div class="dp-login-panel__item dp-login-panel__item-center">
+        <input type="submit" value="Login" id="btn_login_submit" class="dp-login-panel__input-btn" />
+    </div>
+    @if (Model.ShowDefaultCredentials)
+    {
+        <div class="dp-login-panel__item" id="divDefaultCredentials">
+            <p>You are using the Default Credentials:</p>
+            <div class="dp-login-panel__item">
+                <p>username: <strong><span id="defaultEmailAddress">admin@decisions.com</span></strong></p>
+                <p>password: <strong>admin</strong></p>
+                <p><a class="dp-login-panel__link" href="@Url.Action("ChangePassword")">Click here to change</a></p>
+            </div>
+        </div>
+    }
+    @Html.HiddenFor(m => m.SignInWithDifferentAccount)
+    @Html.HiddenFor(m => m.AutoSsoSignIn)
+</form>
+
+@section loginfooter
+{
+    <div class="dp-login-bottom">
+        @if (Model.HideForgotPassword == false)
+        {
+            <a id="aForgotPassword" href="@Url.Action("ForgotPassword")" class="dp-login-bottom__link">Forgot Password</a>
+            <span id="linkDot1" class="dp-login-bottom__span-separator">&#8226;</span>
+        }
+        @if (!string.IsNullOrWhiteSpace(Model.HelpUrl))
+        {
+            <a id="anc_getHelp" href="@Model.HelpUrl" class="dp-login-bottom__link">Get Help</a>
+        }
+        else
+        {
+            <a id="anc_getHelp" onclick="javascript:alert('Help URL is not configured');" class="dp-login-bottom__link">Get Help</a>
+        }
+        <span id="linkDot2" class="dp-login-bottom__span-separator">&#8226;</span>
+        @if (!string.IsNullOrWhiteSpace(Model.ContactUsUrl))
+        {
+            <a id="anc_contactUs" href="@Model.ContactUsUrl" class="dp-login-bottom__link">Contact Us</a>
+        }
+        else
+        {
+            <a id="anc_contactUs" onclick="javascript:alert('Contact Us URL is not configured');" class="dp-login-bottom__link">Contact Us</a>
+        }
+    </div>
+}
+
+<script type="text/javascript">
+
+    AddAntiForgeryToken = function (data) {
+        data.__RequestVerificationToken = $('#__CustomLoginForm input[name=__RequestVerificationToken]').val();
+        return data;
+    };
+      (function() {
+        new $DP.Common.Login({
+            loginContainer:$(".loginContainer"),
+            allowAutoSignIn: @(Html.Raw(JsonConvert.SerializeObject(Model.AllowAutoSignIn))),
+            useChromeSSO: @(Html.Raw(JsonConvert.SerializeObject(Model.UseChromSSO))),
+        });
+      })();
+</script>

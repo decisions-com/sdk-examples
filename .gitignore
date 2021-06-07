@@ -101,3 +101,7 @@
 /FlowToolboxSteps/bin/Debug/sdf.XPath.dll
 /FlowToolboxSteps/bin/Debug/Svg.dll
 /FlowToolboxSteps/bin/Debug/System.IdentityModel.Tokens.Jwt.dll
+/Decisions.CustomLogin.Example/Decisions.CustomLogin.Web/.vs
+/Decisions.CustomLogin.Example/Decisions.CustomLogin.Web/bin
+/Decisions.CustomLogin.Example/Decisions.CustomLogin.Web/obj
+/Decisions.CustomLogin.Example/tsconfig.json

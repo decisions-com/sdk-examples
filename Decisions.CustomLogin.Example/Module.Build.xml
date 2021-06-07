@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<CreateModuleInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Resources NoComponents="true">
+    <CoreServicesDlls></CoreServicesDlls>
+	<ReferenceDlls>
+	</ReferenceDlls>
+    <CliDlls />
+    <MvcScripts>
+    </MvcScripts>  
+    <MvcViews />
+    <MvcStyles>      
+    </MvcStyles>
+    <WebPages>
+    </WebPages>
+    <MvcDlls>
+      <string>.\Decisions.CustomLogin.Web\bin\Debug\net5.0\Decisions.CustomLogin.Web.dll</string>
+      <string>.\Decisions.CustomLogin.Web\bin\Debug\net5.0\Decisions.CustomLogin.Web.Views.dll</string>
+    </MvcDlls>
+    <AgentDlls />
+    <InstallScript />
+    <SqlScripts />
+    <ObjectsToImport>
+    </ObjectsToImport>
+    <MsSqlScript />
+    <MySqlScript />
+    <OracleScript />
+    <FileResources>
+    </FileResources>
+  </Resources>
+  <Dependencies>
+  </Dependencies>
+  <Description>Decisions Custom Login Module provide sample for the implementation of Custom Login Page to be used.
+  </Description>
+</CreateModuleInfo>
