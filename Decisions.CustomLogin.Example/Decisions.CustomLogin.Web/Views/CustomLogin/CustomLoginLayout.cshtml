@@ -1,0 +1,62 @@
+﻿@using Decisions.Web.Core.Security
+@using Decisions.Web.Core.Helpers
+@using Decisions.Web.Core.Utilities
+@inject ContextHolder contextHolder
+@inject DeviceUtilities deviceUtilities
+@inject Decisions.Web.Core.Models.PortalSettingsModel portalSettingsModel
+<script>
+    var CSL_Console_Level = '@portalSettingsModel.PortalSettings.LogToConsoleLevel';
+    var CSL_Server_Level = '@portalSettingsModel.PortalSettings.LogToServerLevel';
+</script>
+<html>
+<title>@ViewBag.Title</title>
+<link rel="shortcut icon" href="@Url.Content("~/favicon.ico")" type="image/x-icon" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="~/styles/master_login.css" rel="stylesheet" />
+<link rel="stylesheet" href="@Url.Content($"~/Styles/ModuleStyles/custom_login.css")" />
+<script src="~/Scripts/external/jquery/jquery-3.5.1.js"></script>
+<script src="~/Scripts/common/scriptloader.js"></script>
+<script src="~/scripts/portal/errorhandler.js"></script>
+<script src="~/bundles/datatypesbundle.js"></script>
+<script>
+    var virtualPath = '@Context.Request.GetVirtualPath()';
+    var portalBaseURL = '@Context.Request.GetPortalBaseUrl(contextHolder, deviceUtilities)';
+    var CURRENT_DECISIONS_VERSION = '@Decisions.Version.VERSION';
+    Decisions.DataTypes.baseURL = "@Context.Request.GetBaseApiUrl()";
+
+	function openLoginModal() {
+		var loginModal = document.getElementById('login_modal');
+		loginModal.style.display = 'block';
+	}
+	function closeLoginModal() {
+		var loginModal = document.getElementById('login_modal');
+		loginModal.style.display = 'none';
+	}
+</script>
+
+<body class="loginpage @ViewData["AdditionalLoginPageClass"]">
+  
+    <div class="login-corner-branding @ViewData["AdditionalCornerBrandingClass"]"></div>
+    <div id="login_floater"></div>
+    <div class="loginContainer"></div>
+    <div class="login dp-login-panel @ViewData["AdditionalUserContainerClass"]">
+        <div class="dp-login-panel__logo">
+            <img src="@Url.Content("~/Handlers/GetLogo.ashx?loginlogo=1")" alt="Decisions" class="dp-login-panel__logo-image" />
+        </div>
+        <div class="dp-login-panel__body @ViewData["AdditionalBodyClass"]">
+            <div class="dp-login-panel__logo" style="padding-top:0px; padding-bottom:40px; font-size:42px;font-weight:600;">
+                CUSTOM LOGIN PAGE
+            </div>
+            @RenderBody()
+        </div>
+        <!-- /.login_cnt -->
+        <div id="login_modal" class="dp-login-modal">
+            @RenderSection("loginmodal", false)
+        </div>
+    </div>
+    <div id="login_footer" class="">
+        @RenderSection("loginfooter", false)
+    </div>
+</body>
+</html>

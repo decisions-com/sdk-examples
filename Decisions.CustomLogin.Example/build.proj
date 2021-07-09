@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="build_all">
 	<PropertyGroup>
-		<CreateModule>..\..\output\binutils\CreateModule.exe</CreateModule>
-		<CreateModuleVersion>..\..\output\binutils\UpdateModuleVersionOnBuild.exe</CreateModuleVersion>
-		<CheckChanges>..\..\output\binutils\CheckForFileChanges.exe</CheckChanges>
-		<FrontEndBuildPath>..\..\hosts\Decisions.FrontEnd\Decisions.FrontEnd.proj</FrontEndBuildPath>
 		<Configuration>Debug</Configuration>
 		<OutputPath>bin\$(Configuration)</OutputPath>
 	</PropertyGroup>
-	    <Import Project="..\..\lib\msbuild\decisions.net.targets" />
+
 
 	<Target Name="build_all">
 		<CallTarget Targets="do_build" />
@@ -16,34 +12,5 @@
 
 	<Target Name="do_build">
 		<Exec Command="dotnet publish .\Decisions.CustomLogin.Web\Decisions.CustomLogin.Web.csproj --output .\Decisions.CustomLogin.Web\bin -c $(Configuration)" />
-		<CallTarget Targets="build_module" />
 	</Target>
-
-
-	<Target Name="build_module">
-		<Exec Command="$(CreateModuleVersion) &quot;..\..\Build.version&quot; &quot;Module.Build.xml&quot; &quot;Module.Build.versioned.xml&quot; &quot;..\..\Version.cs&quot; false &quot;Decisions.CustomLogin.Example&quot;" />
-		<!-- Do NOT put Decisions.CustomLogin in allmodules -->
-		<Exec Command="$(CreateModule) -buildmodule Decisions.CustomLogin.Example -output &quot;..\..\output\modules&quot; -buildfile Module.Build.versioned.xml" />
-	</Target>
-
-	<Target Name="BeforeBuild" BeforeTargets="build_specs">
-		<MSBuild Projects="$(FrontEndBuildPath)" Targets="VerifyToolsVersion"/>
-		<CallTarget Targets="InstallDependencies"/>
-	</Target>
-
-	<Target Name="InstallDependencies" Condition="'$(SkipInstallDeps)' != 'true'">
-		<Message Importance="high" Text="Installing npm dependencies..." />
-		<Exec Command="yarn --frozen-lockfile" />
-	</Target>
-
-
-
-	<PropertyGroup>
-
-	</PropertyGroup>
-	<ItemGroup>
-		<ZipFiles Include="$(ZipSource)\*.*" />
-	</ItemGroup>
-
-
 </Project>

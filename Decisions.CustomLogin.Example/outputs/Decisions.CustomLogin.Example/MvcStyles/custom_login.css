@@ -1,0 +1,16 @@
+﻿.loginpage {
+    background: #45599b !important;
+}
+
+.login-corner-branding {
+    background-image: url(http://www.clker.com/cliparts/2/c/Y/G/R/m/page-corner.svg);
+}
+
+.dp-login-panel__input-btn {
+    background-color: #11186f !important;
+    width: 100%;
+}
+
+.dp-login-panel__input-text, .dp-login-panel__input-password {
+    height: 60px;
+}

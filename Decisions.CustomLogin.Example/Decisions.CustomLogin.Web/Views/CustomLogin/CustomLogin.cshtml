@@ -9,19 +9,10 @@
 
 @{
     ViewData["Title"] = portalSettingsModel.PortalSettings.DefaultWebPageTitle ?? "Log in";
-    this.Layout = "~/Views/Shared/_LoginLayout.cshtml";
+    this.Layout = Decisions.Web.Core.Helpers.CustomLoginPageProvider.GetLoginLayoutPath();
 }
 
 <script src="~/Scripts/login.js"></script>
-<style>
-    body {
-        background: #a7a7a6 !important;
-    }
-</style>
-
-<div class="dp-login-panel__logo" style="padding-top:0px; padding-bottom:40px; font-size:42px;font-weight:600;">
-    CUSTOM LOGIN PAGE
-</div>
 
 <form id="__CustomLoginForm" asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="dp-login-panel__form">
     @Html.AntiForgeryToken()
@@ -56,7 +47,7 @@
         <div class="dp-login-panel__item dp-login-panel__item-center">
             @if (Model.CanRegister)
             {
-                <a href="@Url.Action("RegisterUser")" class="dp-login-panel__link dp-login-panel__register-btn">Register</a>
+                <a href="@Url.Action("RegisterUser","Account")" class="dp-login-panel__link dp-login-panel__register-btn">Register</a>
             }
             @if (Model.CanRegister && Model.LoginAsGuest)
             {
@@ -72,7 +63,7 @@
     @if (Model.SignInWithDifferentAccount)
     {
         <div class="dp-login-panel__item">
-            <a id="account_chooser_link" class="dp-login-panel__link" href="@Url.Action("Login")">Sign in with a different account</a>
+            <a id="account_chooser_link" class="dp-login-panel__link" href="@Url.Action("Login","Account")">Sign in with a different account</a>
         </div>
     }
     <div class="dp-login-panel__item dp-login-panel__item-center">
@@ -85,7 +76,7 @@
             <div class="dp-login-panel__item">
                 <p>username: <strong><span id="defaultEmailAddress">admin@decisions.com</span></strong></p>
                 <p>password: <strong>admin</strong></p>
-                <p><a class="dp-login-panel__link" href="@Url.Action("ChangePassword")">Click here to change</a></p>
+                <p><a class="dp-login-panel__link" href="@Url.Action("ChangePassword","Account")">Click here to change</a></p>
             </div>
         </div>
     }
@@ -98,7 +89,7 @@
     <div class="dp-login-bottom">
         @if (Model.HideForgotPassword == false)
         {
-            <a id="aForgotPassword" href="@Url.Action("ForgotPassword")" class="dp-login-bottom__link">Forgot Password</a>
+            <a id="aForgotPassword" href="@Url.Action("ForgotPassword","Account")" class="dp-login-bottom__link">Forgot Password</a>
             <span id="linkDot1" class="dp-login-bottom__span-separator">&#8226;</span>
         }
         @if (!string.IsNullOrWhiteSpace(Model.HelpUrl))

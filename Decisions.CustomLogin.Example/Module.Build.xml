@@ -8,7 +8,8 @@
     <MvcScripts>
     </MvcScripts>  
     <MvcViews />
-    <MvcStyles>      
+    <MvcStyles>  
+      <string>.\Decisions.CustomLogin.Web\Styles\custom_login.css</string>
     </MvcStyles>
     <WebPages>
     </WebPages>

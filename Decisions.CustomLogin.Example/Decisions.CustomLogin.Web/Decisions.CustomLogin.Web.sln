@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.31205.134
+VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Decisions.CustomLogin.Web", "Decisions.CustomLogin.Web.csproj", "{0FE10296-A90C-41D8-ABB6-64DB2B233BA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Decisions.CustomLogin.Web", "Decisions.CustomLogin.Web.csproj", "{41B446EB-7E99-4524-A592-11148F4B257B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0FE10296-A90C-41D8-ABB6-64DB2B233BA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0FE10296-A90C-41D8-ABB6-64DB2B233BA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0FE10296-A90C-41D8-ABB6-64DB2B233BA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0FE10296-A90C-41D8-ABB6-64DB2B233BA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41B446EB-7E99-4524-A592-11148F4B257B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41B446EB-7E99-4524-A592-11148F4B257B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41B446EB-7E99-4524-A592-11148F4B257B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41B446EB-7E99-4524-A592-11148F4B257B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {ED783711-925A-496D-86AD-2953839D3428}
+		SolutionGuid = {1B445AAD-53F7-451D-BDB2-D106F9A5CA5F}
 	EndGlobalSection
 EndGlobal
