@@ -19,14 +19,7 @@
     <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="DecisionsSDK" Version="7.6.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Decisions.Web.Core">
-      <HintPath>..\decisions.sdk\Decisions.Web.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="DecisionsFramework">
-      <HintPath>..\decisions.sdk\DecisionsFramework.dll</HintPath>
-    </Reference>
   </ItemGroup>
 </Project>
