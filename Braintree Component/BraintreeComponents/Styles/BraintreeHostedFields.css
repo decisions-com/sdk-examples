@@ -1,0 +1,31 @@
+﻿.panel__content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.textfield--float-label {
+    width: 50%;
+    padding-right: 10px;
+}
+.hosted-field--label {
+    padding-bottom: 5px;
+}
+
+.hosted-field {
+    height: 32px;
+    margin-bottom: 15px;
+    display: block;
+    background-color: white;
+    color: rgba(0, 0, 0, .87);
+    border: none;
+    border: 1px solid rgba(0, 0, 0, .26);
+    width: 100%;
+    padding: 0;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.braintreeError {
+    color: red;
+    padding-top: 20px;
+}

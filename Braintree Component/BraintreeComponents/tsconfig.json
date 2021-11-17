@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "noEmitOnError": false,
+    "removeComments": false,
+    "sourceMap": true,
+	"lib": ["dom", "dom.iterable", "ScriptHost", "esnext"],
+    "target": "es5",
+	"declaration": true,
+        "module": "none",
+        "skipLibCheck": true,
+        "noEmit": false  
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

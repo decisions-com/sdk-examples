@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>Braintree_Components</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="refrences\Braintree.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Braintree" Version="5.9.0" />
+    <PackageReference Include="DecisionsSDK" Version="7.6.1" />
+  </ItemGroup>
+
+
+  <Target Name="BuildTS" BeforeTargets="Build">
+    <Message Importance="high" Text="Compiling TypeScript..." />
+    <Exec Command="tsc -p tsconfig.json" />
+  </Target>
+</Project>

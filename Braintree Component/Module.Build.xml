@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<CreateModuleInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Resources>
+	<CoreServicesDlls>
+		<string>.\BraintreeComponents\bin\Debug\net5.0\BraintreeComponents.dll</string>
+		<string>.\BraintreeComponents\refrences\Braintree.dll</string>
+    </CoreServicesDlls>
+	<MvcScripts>
+		<string>.\BraintreeComponents\Scripts\BraintreeHostedFields.js</string>
+		<string>.\BraintreeComponents\Scripts\external\BraintreeClient.min.js</string>
+		<string>.\BraintreeComponents\Scripts\external\BraintreeHosted-fields.min.js</string>		
+	</MvcScripts>
+	<MvcStyles>
+		<string>.\BraintreeComponents\Styles\BraintreeHostedFields.css</string>		
+	</MvcStyles>
+  </Resources>
+  <Description>Brain Tree Hosted Fields</Description>
+</CreateModuleInfo>
