@@ -22,6 +22,7 @@ var $DP;
         var TOKEN_ERROR_TEXT = "TokenError";
         var CLIENT_TOKEN_TEXT = "ClientToken";
         var CLIENT_TOKEN_ERROR_TEXT = "ClientTokenError";
+        var CARDHOLDER_NAME_ERROR_TEXT = "CardHolder Name not provided.";
         var BraintreeHostedFieldsFormControl = /** @class */ (function (_super) {
             __extends(BraintreeHostedFieldsFormControl, _super);
             function BraintreeHostedFieldsFormControl($controlLayout, options) {
@@ -30,6 +31,13 @@ var $DP;
                 _this.options = options;
                 return _this;
             }
+            Object.defineProperty(BraintreeHostedFieldsFormControl.prototype, "CardHolderNameText", {
+                get: function () {
+                    return "card-holder-name_" + this.options.componentId;
+                },
+                enumerable: true,
+                configurable: true
+            });
             // Initialize call the base class method
             BraintreeHostedFieldsFormControl.prototype.initialize = function (host) {
                 _super.prototype.initialize.call(this, host);
@@ -97,20 +105,32 @@ var $DP;
             BraintreeHostedFieldsFormControl.prototype.getValueAsync = function () {
                 var _this = this;
                 return new Promise(function (resolve, reject) {
-                    _this.hostedFieldsCreatedInstance.tokenize(function (err, payload) {
-                        var returnValue = [];
-                        var controlValue = new $DP.FormHost.DecisionsControlData();
-                        if (err) {
-                            controlValue.name = TOKEN_ERROR_TEXT;
-                            controlValue.value = err.message;
-                        }
-                        else {
-                            controlValue.name = NONCE_TEXT;
-                            controlValue.value = payload.nonce;
-                        }
+                    var returnValue = [];
+                    var controlValue = new $DP.FormHost.DecisionsControlData();
+                    var cardHolderName = _this.$controlLayout.find("#" + _this.CardHolderNameText).val();
+                    if (cardHolderName) {
+                        _this.hostedFieldsCreatedInstance.tokenize({
+                            //Add card holder name
+                            cardholderName: cardHolderName
+                        }, function (err, payload) {
+                            if (err) {
+                                controlValue.name = TOKEN_ERROR_TEXT;
+                                controlValue.value = err.message;
+                            }
+                            else {
+                                controlValue.name = NONCE_TEXT;
+                                controlValue.value = payload.nonce;
+                            }
+                            returnValue.push(controlValue);
+                            resolve(returnValue);
+                        });
+                    }
+                    else {
+                        controlValue.name = TOKEN_ERROR_TEXT;
+                        controlValue.value = CARDHOLDER_NAME_ERROR_TEXT;
                         returnValue.push(controlValue);
                         resolve(returnValue);
-                    });
+                    }
                 });
             };
             ;
@@ -119,7 +139,7 @@ var $DP;
             BraintreeHostedFieldsFormControl.prototype.renderhtml = function () {
                 var bthfHtml = "<div IsControl=\"true\" IsControlLoaded=\"false\">Braintree Control</div>";
                 if (!this.options.isInDesignMode) {
-                    bthfHtml = "<div class=\"brain-tree-hosted-fields\">\n                                <div class=\"panel__content\">\n                                    <div class=\"textfield--float-label\">\n                                        <label for=\"card-number\" class=\"hosted-field--label\">Card Number</label>\n                                        <div class=\"hosted-field\" id=\"card-number_" + this.options.componentId + "\"></div>\n                                    </div>\n                                    <div class=\"textfield--float-label\">\n                                        <label for=\"expiration-date\" class=\"hosted-field--label\">Expiration Date</label>\n                                        <div class=\"hosted-field\" id=\"expiration-date_" + this.options.componentId + "\"></div>\n                                    </div>\n                                    <div class=\"textfield--float-label\">\n                                        <label for=\"cvv\" class=\"hosted-field--label\">CVV</label>\n                                        <div class=\"hosted-field\" id=\"cvv_" + this.options.componentId + "\"></div>\n                                    </div>\n                                    <div class=\"textfield--float-label\">\n                                        <label for=\"postal-code\" class=\"hosted-field--label\">Postal Code</label>\n                                        <div class=\"hosted-field\" id=\"postal-code_" + this.options.componentId + "\"></div>\n                                    </div>\n                                </div>\n                            </div>";
+                    bthfHtml = "<div class=\"brain-tree-hosted-fields\">\n                                <div class=\"panel__content\">\n                                    <div class=\"textfield--float-label-Cardholder\">\n                                        <label for=\"" + this.CardHolderNameText + "\" class=\"hosted-field--label\">Card Holder Name</label>\n                                        <input class=\"hosted-field\" id=\"" + this.CardHolderNameText + "\" placeholder=\"Cardholder Name\"/>\n                                    </div>\n                                    <div class=\"textfield--float-label\">\n                                        <label for=\"card-number_" + this.options.componentId + "\" class=\"hosted-field--label\">Card Number</label>\n                                        <div class=\"hosted-field\" id=\"card-number_" + this.options.componentId + "\"></div>\n                                    </div>\n                                    <div class=\"textfield--float-label\">\n                                        <label for=\"expiration-date_" + this.options.componentId + "\" class=\"hosted-field--label\">Expiration Date</label>\n                                        <div class=\"hosted-field\" id=\"expiration-date_" + this.options.componentId + "\"></div>\n                                    </div>\n                                    <div class=\"textfield--float-label\">\n                                        <label for=\"cvv_" + this.options.componentId + "\" class=\"hosted-field--label\">CVV</label>\n                                        <div class=\"hosted-field\" id=\"cvv_" + this.options.componentId + "\"></div>\n                                    </div>\n                                    <div class=\"textfield--float-label\">\n                                        <label for=\"postal-code_" + this.options.componentId + "\" class=\"hosted-field--label\">Postal Code</label>\n                                        <div class=\"hosted-field\" id=\"postal-code_" + this.options.componentId + "\"></div>\n                                    </div>\n                                </div>\n                            </div>";
                 }
                 return $(bthfHtml);
             };

@@ -7,6 +7,10 @@
     width: 50%;
     padding-right: 10px;
 }
+.textfield--float-label-Cardholder {
+    width: 100%;
+    padding-right: 10px;
+}
 .hosted-field--label {
     padding-bottom: 5px;
 }

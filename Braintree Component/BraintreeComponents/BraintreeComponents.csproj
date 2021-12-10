@@ -6,10 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="refrences\Braintree.dll" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Braintree" Version="5.9.0" />
     <PackageReference Include="DecisionsSDK" Version="7.6.1" />
   </ItemGroup>

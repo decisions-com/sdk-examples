@@ -27,6 +27,8 @@ namespace BraintreeComponents
         private string transactionId;
         private bool isValidationError = false;
         private string transactionStatus;
+        private DateTime? transactionDateTime;
+        private bool isTransactionSuccessful = false;
         private List<BraintreeValidationError> error = new List<BraintreeValidationError>();
 
         // Constant variables for exceution
@@ -98,6 +100,8 @@ namespace BraintreeComponents
             BraintreeHostedFieldsOutput braintreeHostedFieldsOutput = new BraintreeHostedFieldsOutput
             {
                 TransactionId = transactionId,
+                TransactionDateTime = transactionDateTime.ToString(),
+                IsTransactionSuccessful = isTransactionSuccessful,
                 Status = transactionStatus,
                 ValidationError = error
             };
@@ -282,11 +286,11 @@ namespace BraintreeComponents
                         PaymentMethodNonce = nonce,
                         MerchantAccountId = merchantAccount,
                         OrderId = orderId,
-                        Descriptor = descriptorRequest,
+                        Descriptor = descriptorRequest,                        
                         Customer = new CustomerRequest
                         {
                             FirstName = firstName,
-                            LastName = lastName
+                            LastName = lastName                          
                         },
                         Options = new TransactionOptionsRequest
                         {
@@ -303,13 +307,16 @@ namespace BraintreeComponents
                         {
                             Transaction transaction = result.Target;
                             transactionId = transaction.Id;
+                            transactionDateTime = transaction.CreatedAt;
                             isValidationError = false;
+                            isTransactionSuccessful = true;
                             transactionStatus = transaction.Status.ToString();
                         }
                         //when transaction failed
                         else
                         {
                             isValidationError = false;
+                            isTransactionSuccessful = false;
                             var exceptions = result.Errors.DeepAll();
 
                             foreach (var exception in exceptions)
@@ -328,6 +335,7 @@ namespace BraintreeComponents
                         // logging the error
                         log.Error(ex);
                         isValidationError = false;
+                        isTransactionSuccessful = false;
 
                         BraintreeValidationError braintreeValidationError = new BraintreeValidationError();
                         braintreeValidationError.Message = ex.Message;
@@ -340,6 +348,7 @@ namespace BraintreeComponents
             else
             {
                 isValidationError = true;
+                isTransactionSuccessful = false;
             }
         }
 

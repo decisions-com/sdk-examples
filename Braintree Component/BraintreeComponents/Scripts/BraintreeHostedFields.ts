@@ -8,9 +8,14 @@ namespace $DP.Control {
     const TOKEN_ERROR_TEXT = "TokenError";
     const CLIENT_TOKEN_TEXT = "ClientToken";
     const CLIENT_TOKEN_ERROR_TEXT = "ClientTokenError";
+    const CARDHOLDER_NAME_ERROR_TEXT = "CardHolder Name not provided.";
     export class BraintreeHostedFieldsFormControl extends DataContentBase {
         constructor(public $controlLayout: JQuery, public options) {
             super($controlLayout, options);
+        }
+                
+        get CardHolderNameText(): string {
+            return `card-holder-name_${this.options.componentId}`;
         }
 
         // Initialize call the base class method
@@ -93,20 +98,35 @@ namespace $DP.Control {
         // It get called when the form is Submitted, here the Hosted Fields are Tokenize and if there is no Error than we get NONCE which is returned to server for further Transaction completion else actual error
         getValueAsync(): Promise<FormHost.DecisionsControlData[]> {
             return new Promise((resolve, reject) => {
-                this.hostedFieldsCreatedInstance.tokenize(function (err, payload) {
-                    let returnValue: $DP.FormHost.DecisionsControlData[] = [];
-                    let controlValue = new $DP.FormHost.DecisionsControlData();
-                    if (err) {
-                        controlValue.name = TOKEN_ERROR_TEXT;
-                        controlValue.value = err.message;
-                    }
-                    else {
-                        controlValue.name = NONCE_TEXT;
-                        controlValue.value = payload.nonce;
-                    }
+                let returnValue: $DP.FormHost.DecisionsControlData[] = [];
+                let controlValue = new $DP.FormHost.DecisionsControlData();
+                const cardHolderName = this.$controlLayout.find(`#${this.CardHolderNameText}`).val();
+
+                if (cardHolderName) {
+                    this.hostedFieldsCreatedInstance.tokenize({
+                        //Add card holder name
+                        cardholderName: cardHolderName
+                    }, (err, payload) => {
+                        if (err) {
+                            controlValue.name = TOKEN_ERROR_TEXT;
+                            controlValue.value = err.message;
+                        }
+                        else {
+                            controlValue.name = NONCE_TEXT;
+                            controlValue.value = payload.nonce;
+                        }
+
+                        returnValue.push(controlValue);
+                        resolve(returnValue);
+                    });
+                }
+                else {
+                    controlValue.name = TOKEN_ERROR_TEXT;
+                    controlValue.value = CARDHOLDER_NAME_ERROR_TEXT;
+
                     returnValue.push(controlValue);
                     resolve(returnValue);
-                });
+                }
             });
         };
 
@@ -118,20 +138,24 @@ namespace $DP.Control {
             if (!this.options.isInDesignMode) {
                 bthfHtml = `<div class="brain-tree-hosted-fields">
                                 <div class="panel__content">
+                                    <div class="textfield--float-label-Cardholder">
+                                        <label for="${this.CardHolderNameText}" class="hosted-field--label">Card Holder Name</label>
+                                        <input class="hosted-field" id="${this.CardHolderNameText}" placeholder="Cardholder Name"/>
+                                    </div>
                                     <div class="textfield--float-label">
-                                        <label for="card-number" class="hosted-field--label">Card Number</label>
+                                        <label for="card-number_${this.options.componentId}" class="hosted-field--label">Card Number</label>
                                         <div class="hosted-field" id="card-number_${this.options.componentId}"></div>
                                     </div>
                                     <div class="textfield--float-label">
-                                        <label for="expiration-date" class="hosted-field--label">Expiration Date</label>
+                                        <label for="expiration-date_${this.options.componentId}" class="hosted-field--label">Expiration Date</label>
                                         <div class="hosted-field" id="expiration-date_${this.options.componentId}"></div>
                                     </div>
                                     <div class="textfield--float-label">
-                                        <label for="cvv" class="hosted-field--label">CVV</label>
+                                        <label for="cvv_${this.options.componentId}" class="hosted-field--label">CVV</label>
                                         <div class="hosted-field" id="cvv_${this.options.componentId}"></div>
                                     </div>
                                     <div class="textfield--float-label">
-                                        <label for="postal-code" class="hosted-field--label">Postal Code</label>
+                                        <label for="postal-code_${this.options.componentId}" class="hosted-field--label">Postal Code</label>
                                         <div class="hosted-field" id="postal-code_${this.options.componentId}"></div>
                                     </div>
                                 </div>

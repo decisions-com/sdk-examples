@@ -1,4 +1,5 @@
 ﻿using Braintree;
+using DecisionsFramework.Design.ConfigurationStorage.Attributes;
 using System.Collections.Generic;
 
 namespace BraintreeComponents
@@ -8,18 +9,34 @@ namespace BraintreeComponents
         IBraintreeGateway CreateGateway(string enviornment, string merchantId, string publickKey, string privateKey);
         IBraintreeGateway GetGateway(string enviornment, string merchantId, string publickKey, string privateKey);
     }
-
+        
+    [Writable]
     public class BraintreeHostedFieldsOutput
     {
+        [WritableValue]
         public string TransactionId { get; set; }
+
+        [WritableValue]
+        public string TransactionDateTime { get; set; }
+
+        [WritableValue]
+        public bool IsTransactionSuccessful { get; set; }
+
+        [WritableValue]
         public string Status { get; set; }
+
+        [WritableValue]
         public List<BraintreeValidationError> ValidationError { get; set; }
     }
 
+    [Writable]
     public class BraintreeValidationError
     {
+        [WritableValue]
         public string Attribute { get; set; }
+        [WritableValue]
         public string Code { get; set; }
+        [WritableValue]
         public string Message { get; set; }
     }
 
