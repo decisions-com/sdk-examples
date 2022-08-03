@@ -105,3 +105,6 @@
 /Decisions.CustomLogin.Example/Decisions.CustomLogin.Web/bin
 /Decisions.CustomLogin.Example/Decisions.CustomLogin.Web/obj
 /Decisions.CustomLogin.Example/tsconfig.json
+/CustomModule/bin
+/CustomModule/obj
+/CustomModule/CustomModule.zip
