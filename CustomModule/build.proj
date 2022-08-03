@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="build_all">
     
 	<Target Name="build_all">
-        <Exec Command="dotnet publish .\CustomModule.csproj --runtime win-x64 --self-contained false --output .\CustomModule\obj -c Debug" />
+        <Exec Command="dotnet publish .\CustomModule.csproj --runtime win-x64 --self-contained false --output .\obj -c Debug" />
 		<Exec Command="dotnet tool update --global CreateDecisionsModule-GlobalTool" />
         <CallTarget Targets="build_module"/>
     </Target>
