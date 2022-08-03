@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<CreateModuleInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Resources NoComponents="true">
+	<CoreServicesDlls>
+      <string>.\obj\Debug\net6.0\win-x64\CustomModule.dll</string>
+    </CoreServicesDlls>
+	<ReferenceDlls/>
+    <CliDlls/>
+    <WebPages/>
+	<MvcViews/>
+	<MvcDlls/>
+    <AgentDlls/>
+    <InstallScript/>
+    <SqlScripts/>
+    <ObjectsToImport/>
+    <MsSqlScript/>
+    <MySqlScript/>
+    <OracleScript/>
+  </Resources>
+  <ImagePath/>
+  <Description>This is an example of a Custom Module</Description>
+</CreateModuleInfo>
