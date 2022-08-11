@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Decisions.CustomLogin.Web", "Decisions.CustomLogin.Web.csproj", "{41B446EB-7E99-4524-A592-11148F4B257B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Decisions.CustomLogin.Web", "Decisions.CustomLogin.Web\Decisions.CustomLogin.Web.csproj", "{41B446EB-7E99-4524-A592-11148F4B257B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
