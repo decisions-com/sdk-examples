@@ -7,7 +7,7 @@
     <Authors>Decisions</Authors>
     <Copyright>Copyright Decisions, LLC ©2010-2020</Copyright>
     <OutputType>Library</OutputType>
-    <TargetFramework>.net6</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="wwwroot\**" />
