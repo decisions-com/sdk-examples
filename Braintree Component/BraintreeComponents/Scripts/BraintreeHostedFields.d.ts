@@ -6,7 +6,7 @@ declare namespace $DP.Control {
         $controlLayout: JQuery;
         options: any;
         constructor($controlLayout: JQuery, options: any);
-        readonly CardHolderNameText: string;
+        get CardHolderNameText(): string;
         initialize(host: $DP.FormHost.DecisionsFormSurface): void;
         clientToken?: string;
         shortTypeName?: string;

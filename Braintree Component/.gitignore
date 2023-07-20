@@ -1,0 +1,5 @@
+**/bin
+**/obj
+**/.idea
+**/node_modules
+BraintreeHostedFields.zip
