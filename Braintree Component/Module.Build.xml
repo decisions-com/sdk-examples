@@ -2,7 +2,7 @@
 <CreateModuleInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Resources>
 	<CoreServicesDlls>
-		<string>.\BraintreeComponents\bin\Debug\net7.0\win-x64\BraintreeComponents.dll</string>
+		<string>.\BraintreeComponents\obj\BraintreeComponents.dll</string>
 		<string>.\BraintreeComponents\obj\Braintree.dll</string>
     </CoreServicesDlls>
 	<MvcScripts>
