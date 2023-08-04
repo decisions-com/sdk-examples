@@ -28,6 +28,8 @@ namespace $DP.Control {
         hostedFieldsCreatedInstance: any;
 
         // Returns the Control HTML element
+        
+        // @ts-ignore
         getControl(): JQuery<HTMLElement> {
             return this.$controlLayout.find(".brain-tree-hosted-fields");
         }

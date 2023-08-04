@@ -1,0 +1,8 @@
+**/bin
+**/obj
+**/.idea
+**/node_modules
+BraintreeHostedFields.zip
+BraintreeComponents/Scripts/BraintreeHostedFields.js
+BraintreeComponents/Scripts/BraintreeHostedFields.d.ts
+BraintreeComponents/Scripts/BraintreeHostedFields.js.map

@@ -1,13 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <RootNamespace>Braintree_Components</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Braintree" Version="5.9.0" />
-    <PackageReference Include="DecisionsSDK" Version="7.6.1" />
+    <PackageReference Include="Braintree" Version="5.18.0" />
+    <PackageReference Include="DecisionsSDK" Version="8.13.0" />
   </ItemGroup>
 
 

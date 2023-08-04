@@ -1,11 +1,17 @@
 #Requires -RunAsAdministrator
 
 param (
-    [Parameter(Mandatory=$false)][string]$msbuild,
-    [Parameter(Mandatory=$false)][string]$framework
+    [Parameter(Mandatory = $false)][string]$msbuild,
+    [Parameter(Mandatory = $false)][string]$framework
 )
 
 function FindMSBuild {
+
+    $guess = Join-Path -Path ${Env:ProgramFiles} -ChildPath "Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MsBuild.exe"
+    if (Test-Path -PathType leaf -LiteralPath $guess ) {
+        return $guess
+    }
+    
     $guess = Join-Path -Path ${Env:ProgramFiles(x86)} -ChildPath "Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\msbuild.exe"
     if (Test-Path -PathType leaf -LiteralPath $guess ) {
         return $guess
@@ -19,7 +25,7 @@ function FindMSBuild {
 
     # Check for Visual Studio MSBuild version 2019 (15.0)
     $guess = Join-Path -Path ${Env:ProgramFiles(x86)} -ChildPath "Microsoft Visual Studio\2019\Professional\MSBuild\Current\bin\msbuild.exe"
-        if (Test-Path -PathType leaf -LiteralPath $guess ) {
+    if (Test-Path -PathType leaf -LiteralPath $guess ) {
         return $guess
     }
 
@@ -77,30 +83,27 @@ function StartDecisionsServer {
     Write-Output "Decisions Server Started."
 }
 
-function FindModuleName($buildProj)
-{
+function FindModuleName($buildProj) {
     [xml]$local:XmlDocument = Get-Content -Path $buildProj
 
-    foreach($local:target in $local:XmlDocument.Project.Target){
-        if($local:target.Name -eq "build_module")
-        {
+    foreach ($local:target in $local:XmlDocument.Project.Target) {
+        if ($local:target.Name -eq "build_module") {
             $local:cmdline = $local:target.Exec.Command
             break
         }
     }
 
     $local:cmdline = $local:cmdline -split ' '
-    $local:index = [array]::indexof($local:cmdline,"-buildmodule")
+    $local:index = [array]::indexof($local:cmdline, "-buildmodule")
     $local:index++
 
     return $local:cmdline[$local:index]
 }
 
-function CopyModule($basePath)
-{
+function CopyModule($basePath) {
     $local:moduleName = FindModuleName("$basePath\build.proj")
     $local:fullModuleName = "$basePath\$local:moduleName.zip"
-    $local:destination  = "C:\Program Files\Decisions\Decisions Server\CustomModules\$local:moduleName.zip"
+    $local:destination = "C:\Program Files\Decisions\Decisions Server\CustomModules\$local:moduleName.zip"
 
     Write-Output "Copying module..."
     Copy-Item $local:fullModuleName $local:destination
@@ -108,8 +111,7 @@ function CopyModule($basePath)
 
 function FindSolutionFile($basePath) {
     $local:filelist = Get-ChildItem -Path "$basePath\*.sln"
-    if($local:filelist.Length -eq 0)
-    {
+    if ($local:filelist.Length -eq 0) {
         throw "Can not find *.sln file"
     }
     return $local:filelist[0].FullName
@@ -117,7 +119,8 @@ function FindSolutionFile($basePath) {
 
 if ($msbuild) {
     Write-Output "Using $msbuild"
-} else {
+}
+else {
     Write-Output "Looking for MSBUILD.exe"
     $msbuild = FindMSBuild
     Write-Output "Found and Trying $msbuild"
@@ -132,9 +135,8 @@ $compiletarget = GetCompileTarget $basepath
 $solution = FindSolutionFile($basePath)
 & $msbuild -t:restore $solution
 & $msbuild $compiletarget
-if ($LastExitCode -ne 0)
-{
-   throw "Compile failed with the return code: $LastExitCode"
+if ($LastExitCode -ne 0) {
+    throw "Compile failed with the return code: $LastExitCode"
 }
 
 StopDecisionsServer

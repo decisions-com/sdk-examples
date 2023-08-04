@@ -2,8 +2,8 @@
 <CreateModuleInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Resources>
 	<CoreServicesDlls>
-		<string>.\BraintreeComponents\bin\Debug\net5.0\BraintreeComponents.dll</string>
-		<string>.\BraintreeComponents\refrences\Braintree.dll</string>
+		<string>.\BraintreeComponents\obj\BraintreeComponents.dll</string>
+		<string>.\BraintreeComponents\obj\Braintree.dll</string>
     </CoreServicesDlls>
 	<MvcScripts>
 		<string>.\BraintreeComponents\Scripts\BraintreeHostedFields.js</string>
