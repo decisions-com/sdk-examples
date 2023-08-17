@@ -14,7 +14,7 @@
     <WebPages>
     </WebPages>
     <MvcDlls>
-      <string>.\Decisions.CustomLogin.Web\bin\Debug\net6.0\Decisions.CustomLogin.Web.dll</string>
+      <string>.\Decisions.CustomLogin.Web\bin\Decisions.CustomLogin.Web.dll</string>
     </MvcDlls>
     <AgentDlls />
     <InstallScript />

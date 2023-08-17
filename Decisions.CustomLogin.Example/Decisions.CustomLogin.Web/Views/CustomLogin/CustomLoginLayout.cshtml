@@ -1,4 +1,4 @@
-﻿@using Decisions.Web.Core.Security
+@using Decisions.Web.Core.Security
 @using Decisions.Web.Core.Helpers
 @using Decisions.Web.Core.Utilities
 @inject ContextHolder contextHolder
@@ -19,10 +19,10 @@
 <script src="~/Scripts/common/scriptloader.js"></script>
 <script src="~/scripts/portal/errorhandler.js"></script>
 <script src="~/bundles/datatypesbundle.js"></script>
+<script src="~/Scripts/account/login.utils.js"></script>
 <script>
     var virtualPath = '@Context.Request.GetVirtualPath()';
     var portalBaseURL = '@Context.Request.GetPortalBaseUrl(contextHolder, deviceUtilities)';
-    var CURRENT_DECISIONS_VERSION = '@Decisions.Version.VERSION';
     Decisions.DataTypes.baseURL = "@Context.Request.GetBaseApiUrl()";
 
 	function openLoginModal() {

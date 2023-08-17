@@ -21,7 +21,7 @@
         @if (Model.SignInWithDifferentAccount)
         {
             <label id="lbl_login_username" class="dp-login-panel__label">@Model.Email</label>
-            @Html.HiddenFor(m => Model.Email);
+            @Html.HiddenFor(m => Model.Email)
         }
         else
         {
@@ -32,7 +32,10 @@
 
     <div class="dp-login-panel__item">
         <label for="txt_login_password" class="dp-login-panel__label">Password</label>
-        @Html.PasswordFor(m => m.Password, new { @class = "dp-login-panel__input-password", id = "txt_login_password" })
+        <div class="dp-login-panel__password-box">
+            @Html.PasswordFor(m => m.Password, new { @class = "dp-login-panel__input-password", id = "txt_login_password" })
+            <span id="login-password-eye" class="dp-login-panel__eye dp-login-panel__eye--inactive"></span>
+        </div>
         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "dp-login-panel__field-validation-error validation_message validate_PasswordRequired" })
         <span class="dp-login-panel__field-validation-error validation_message" id="lbl_error">@Model.Error</span>
     </div>
@@ -85,29 +88,35 @@
 </form>
 
 @section loginfooter
-{
+    {
     <div class="dp-login-bottom">
         @if (Model.HideForgotPassword == false)
         {
-            <a id="aForgotPassword" href="@Url.Action("ForgotPassword","Account")" class="dp-login-bottom__link">Forgot Password</a>
+            <a id="aForgotPassword" href="@Url.Action("ForgotPassword", "Account",new { InstanceName = Model.InstanceName })" class="dp-login-bottom__link">Forgot Password ?</a>
             <span id="linkDot1" class="dp-login-bottom__span-separator">&#8226;</span>
         }
-        @if (!string.IsNullOrWhiteSpace(Model.HelpUrl))
+        @if (!Model.HideGetHelp)
         {
-            <a id="anc_getHelp" href="@Model.HelpUrl" class="dp-login-bottom__link">Get Help</a>
+            @if (!string.IsNullOrWhiteSpace(Model.HelpUrl))
+            {
+                <a id="anc_getHelp" href="@Model.HelpUrl" class="dp-login-bottom__link">Get Help</a>
+            }
+            else
+            {
+                <a id="anc_getHelp" onclick="javascript:alert('Help URL is not configured');" class="dp-login-bottom__link">Get Help</a>
+            }
+            <span id="linkDot2" class="dp-login-bottom__span-separator">&#8226;</span>
         }
-        else
+        @if (!Model.HideContactUs)
         {
-            <a id="anc_getHelp" onclick="javascript:alert('Help URL is not configured');" class="dp-login-bottom__link">Get Help</a>
-        }
-        <span id="linkDot2" class="dp-login-bottom__span-separator">&#8226;</span>
-        @if (!string.IsNullOrWhiteSpace(Model.ContactUsUrl))
-        {
-            <a id="anc_contactUs" href="@Model.ContactUsUrl" class="dp-login-bottom__link">Contact Us</a>
-        }
-        else
-        {
-            <a id="anc_contactUs" onclick="javascript:alert('Contact Us URL is not configured');" class="dp-login-bottom__link">Contact Us</a>
+            @if (!string.IsNullOrWhiteSpace(Model.ContactUsUrl))
+            {
+                <a id="anc_contactUs" href="@Model.ContactUsUrl" class="dp-login-bottom__link">Contact Us</a>
+            }
+            else
+            {
+                <a id="anc_contactUs" onclick="javascript:alert('Contact Us URL is not configured');" class="dp-login-bottom__link">Contact Us</a>
+            }
         }
     </div>
 }
@@ -118,11 +127,11 @@
         data.__RequestVerificationToken = $('#__CustomLoginForm input[name=__RequestVerificationToken]').val();
         return data;
     };
-      (function() {
+    (function () {
         new $DP.Common.Login({
-            loginContainer:$(".loginContainer"),
+            loginContainer: $(".loginContainer"),
             allowAutoSignIn: @(Html.Raw(JsonConvert.SerializeObject(Model.AllowAutoSignIn))),
             useChromeSSO: @(Html.Raw(JsonConvert.SerializeObject(Model.UseChromSSO))),
         });
-      })();
+    })();
 </script>
