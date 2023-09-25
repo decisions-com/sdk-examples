@@ -12,6 +12,6 @@
 	</Target>
 
 	<Target Name="build_module">
-		<Exec Command="CreateDecisionsModule -buildmodule Decisions.CustomLogin.Web -output &quot;.&quot; -buildfile Module.Build.xml"/>
+		<Exec Command="CreateDecisionsModule -buildmodule Decisions.CustomLogin.Web -output &quot;.&quot; -buildfile Module.Build.json"/>
 	</Target>
 </Project>

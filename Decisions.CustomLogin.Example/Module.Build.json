@@ -1,0 +1,27 @@
+{
+  "Resources": {
+    "NoComponents": true,
+    "CoreServicesDlls": [],
+    "ReferenceDlls": [],
+    "CliDlls": [],
+    "MvcScripts": [],
+    "MvcViews": [],
+    "MvcStyles": [
+      "./Decisions.CustomLogin.Web/Styles/custom_login.css"
+    ],
+    "WebPages": [],
+    "MvcDlls": [
+	  "./Decisions.CustomLogin.Web/bin/Decisions.CustomLogin.Web.dll"
+    ],
+    "AgentDlls": [],
+    "InstallScript": [],
+    "SqlScripts": [],
+    "ObjectsToImport": [],
+    "MsSqlScript": [],
+    "MySqlScript": [],
+    "OracleScript": [],
+    "FileResources": []
+  },
+  "Dependencies": [],
+  "Description": "Decisions Custom Login Module provide sample for the implementation of Custom Login Page to be used."
+}
