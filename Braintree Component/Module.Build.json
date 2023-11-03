@@ -1,0 +1,17 @@
+{
+    "Resources": {
+        "CoreServicesDlls": [
+            "./BraintreeComponents/bin/BraintreeComponents.dll",
+            "./BraintreeComponents/bin/Braintree.dll"
+        ],
+        "MvcScripts": [
+            "./BraintreeComponents/Scripts/BraintreeHostedFields.js",
+            "./BraintreeComponents/Scripts/external/BraintreeClient.min.js",
+            "./BraintreeComponents/Scripts/external/BraintreeHosted-fields.min.js"
+        ],
+        "MvcStyles": [
+            "./BraintreeComponents/Styles/BraintreeHostedFields.css"
+        ]
+    },
+    "Description": "Brain Tree Hosted Fields"
+}

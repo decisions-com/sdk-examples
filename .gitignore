@@ -1,4 +1,4 @@
-﻿################################################################################
+################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
@@ -110,3 +110,6 @@
 /CustomModule/CustomModule.zip
 /CustomModule/.idea
 /Decisions.CustomLogin.Example/.idea
+Braintree Component/BraintreeComponents/obj/
+Braintree Component/.vs/
+Braintree Component/BraintreeComponents/bin/

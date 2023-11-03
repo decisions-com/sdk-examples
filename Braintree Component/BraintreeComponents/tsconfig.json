@@ -4,6 +4,7 @@
     "noEmitOnError": false,
     "removeComments": false,
     "sourceMap": true,
+	"forceConsistentCasingInFileNames": false,
 	"lib": ["dom", "dom.iterable", "ScriptHost", "esnext"],
     "target": "es5",
 	"declaration": true,

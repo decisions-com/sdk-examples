@@ -6,12 +6,12 @@ declare namespace $DP.Control {
         $controlLayout: JQuery;
         options: any;
         constructor($controlLayout: JQuery, options: any);
-        readonly CardHolderNameText: string;
+        get CardHolderNameText(): string;
         initialize(host: $DP.FormHost.DecisionsFormSurface): void;
         clientToken?: string;
         shortTypeName?: string;
         hostedFieldsCreatedInstance: any;
-        getControl(): JQuery<HTMLElement>;
+        getControl(): JQuery;
         setValue(data: FormHost.DecisionsControlData[], isFromStartUp: boolean): boolean;
         getValue(): FormHost.DecisionsControlData[];
         getValueAsync(): Promise<FormHost.DecisionsControlData[]>;
